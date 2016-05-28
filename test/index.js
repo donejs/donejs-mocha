@@ -22,12 +22,14 @@ describe('donejs-mocha', function() {
     assert.file([path.join('src', 'test', 'functional.js')]);
   });
 
-  it('should write component test template', function() {
+  it('should write component test templates', function() {
     assert.file([path.join('.donejs', 'templates', 'component', 'modlet', 'component_test.js')]);
+    assert.file([path.join('.donejs', 'templates', 'component', 'modlet', 'test.html')]);
   });
 
-  it('should write module test template', function() {
+  it('should write module test templates', function() {
     assert.file([path.join('.donejs', 'templates', 'module', 'module_test.js')]);
+    assert.file([path.join('.donejs', 'templates', 'module', 'test.html')]);
   });
 
   it('should write supermodel test template', function() {
