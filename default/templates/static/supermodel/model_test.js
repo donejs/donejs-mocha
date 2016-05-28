@@ -1,6 +1,8 @@
 import 'steal-mocha';
-import assert from 'assert';
+import chai from 'chai';
 import <%= className %> from './<%= name %>';
+
+let assert = chai.assert;
 
 describe('models/<%= name %>', function() {
   it('getList', function(done){

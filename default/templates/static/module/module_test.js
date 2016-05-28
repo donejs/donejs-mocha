@@ -1,6 +1,8 @@
 import 'steal-mocha';
-import assert from 'assert';
+import chai from 'chai';
 import module from './<%= name %>';
+
+let assert = chai.assert;
 
 describe('<%= module %>', function(){
   it('Initialized the module', function(){

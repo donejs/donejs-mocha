@@ -1,6 +1,8 @@
 import 'steal-mocha';
-import assert from 'assert';
+import chai from 'chai';
 import { ViewModel } from './<%= name %>';
+
+let assert = chai.assert;
 
 // ViewModel unit tests
 describe('<%= module %>', function(){

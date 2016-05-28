@@ -33,4 +33,9 @@ describe('donejs-mocha', function() {
   it('should write supermodel test template', function() {
     assert.file([path.join('.donejs', 'templates', 'supermodel', 'model_test.js')]);
   });
+
+  it('should update package.json', function() {
+    assert.file(['package.json']);
+    assert.JSONFileContent('package.json', { system: { map: { chai: 'chai/chai' } } });
+  });
 });

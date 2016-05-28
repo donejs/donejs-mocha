@@ -1,5 +1,7 @@
 var generator = require('yeoman-generator');
 var path = require('path');
+var fs = require('fs');
+var _ = require('lodash');
 
 module.exports = generator.Base.extend({
   initializing: function () {
@@ -11,7 +13,7 @@ module.exports = generator.Base.extend({
   },
 
   installingAssert: function() {
-    this.npmInstall(['assert'], { 'saveDev': true });
+    this.npmInstall(['chai'], { 'saveDev': true });
   },
 
   writing: function () {
@@ -32,5 +34,15 @@ module.exports = generator.Base.extend({
       srcDestination,
       this.pkg
     );
+
+    // update package.json
+    var packageJson = this.destinationPath('package.json');
+    var packageJsonContent =fs.readFileSync(packageJson, 'utf8');
+    var json = packageJsonContent && JSON.parse(packageJsonContent) || {};
+    json.system = json.system || {};
+    json.system.map = _.assign({}, json.system.map, {
+      chai: 'chai/chai'
+    });
+    fs.writeFileSync(packageJson, JSON.stringify(json));
   }
 });
