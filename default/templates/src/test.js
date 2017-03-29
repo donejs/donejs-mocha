@@ -12,4 +12,3 @@ describe('<%= name %> functional smoke test', function(){
     F('title').text('<%= name %>', 'Title is set');
   });
 });
-

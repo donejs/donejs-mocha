@@ -19,6 +19,15 @@ module.exports = generator.Base.extend({
   writing: function () {
     var templateDestination = this.destinationPath(path.join('.donejs', 'templates'));
     var srcDestination = this.destinationPath('src');
+    var htmlDestination = this.destinationPath('./');
+
+    this.log('Copying test.html to ' + htmlDestination);
+
+    this.fs.copyTpl(
+      this.templatePath('html/'),
+      htmlDestination,
+      this.pkg
+    );
 
     this.log('Copying template files to ' + templateDestination);
 
@@ -39,8 +48,8 @@ module.exports = generator.Base.extend({
     var packageJson = this.destinationPath('package.json');
     var packageJsonContent =fs.readFileSync(packageJson, 'utf8');
     var json = packageJsonContent && JSON.parse(packageJsonContent) || {};
-    json.system = json.system || {};
-    json.system.map = _.assign({}, json.system.map, {
+    json.steal = json.steal || {};
+    json.steal.map = _.assign({}, json.steal.map, {
       chai: 'chai/chai'
     });
     fs.writeFileSync(packageJson, JSON.stringify(json));
