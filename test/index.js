@@ -13,13 +13,13 @@ describe('donejs-mocha', function() {
   });
 
   it('should write test.html', function() {
-    assert.file([path.join('src', 'test.html')]);
-    assert.fileContent(path.join('src', 'test.html'), '<title>foo tests</title>');
-    assert.fileContent(path.join('src', 'test.html'), '<script src="../node_modules/steal/steal.js" main="foo/test/" data-mocha="bdd"></script>');
+    assert.file(['test.html']);
+    assert.fileContent('test.html', '<title>foo tests</title>');
+    assert.fileContent('test.html', '<script src="../node_modules/steal/steal.js" main="foo/test/" data-mocha="bdd"></script>');
   });
 
-  it('should write test/functional.js', function() {
-    assert.file([path.join('src', 'test', 'functional.js')]);
+  it('should write test.js', function() {
+    assert.file([path.join('src', 'test.js')]);
   });
 
   it('should write component test templates', function() {
@@ -38,6 +38,6 @@ describe('donejs-mocha', function() {
 
   it('should update package.json', function() {
     assert.file(['package.json']);
-    assert.JSONFileContent('package.json', { system: { map: { chai: 'chai/chai' } } });
+    assert.JSONFileContent('package.json', { steal: { map: { chai: 'chai/chai' } } });
   });
 });
