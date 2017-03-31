@@ -1,9 +1,9 @@
-var generator = require('yeoman-generator');
+var Generator = require('yeoman-generator');
 var path = require('path');
 var fs = require('fs');
 var _ = require('lodash');
 
-module.exports = generator.Base.extend({
+module.exports = Generator.extend({
   initializing: function () {
     this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
   },
